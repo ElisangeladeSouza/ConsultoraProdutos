@@ -1,0 +1,70 @@
+/*html, body{height: 100%;}*/
+
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.logo{
+    width: 180px; 
+    height: 60px; 
+    padding-left: 5px;
+    padding-top: 2px;
+}
+
+header{
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px; 
+    height: 60px; 
+    background-color: lightskyblue;
+    color: white; 
+    box-shadow: 0px 3px 3px #ccc;
+}
+
+body{
+    font-size: 14px;
+}
+
+.upper{
+    text-transform: uppercase;
+}
+
+.lower{
+    text-transform: lowercase;
+}
+
+.menu{
+    float: left;
+    position: fixed;
+    left: 0;
+    width: 180px;
+    margin-left: 5px;
+}
+
+.conteudo{
+    left: 0;
+    margin-left: 215px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+#bottom{
+    color: darkcyan;
+    margin: 5px 5px 5px 5px;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+footer {
+    position: fixed;
+    padding: 0px;
+    margin-bottom: 1px;
+    color: white;
+    height: 20px;
+    width: 100%;
+    bottom: 0;
+    border: 1px;
+    border-radius: 5px;
+    background-color: lightskyblue;
+}
