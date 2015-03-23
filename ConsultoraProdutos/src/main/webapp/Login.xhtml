@@ -1,16 +1,89 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet library="css" name="estilos.css"/>
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/consultoraProdutos/resources/imagens/favicon.ico" />
+        <title><ui:insert name="title">Consultora de Produtos - Login</ui:insert></title>
+    </h:head>
+
+    <h:body>
+        <div style="padding-top: 50px; text-align: center">
+            <h:graphicImage library="imagens" name="logo_mercia_mini.png"/>
+        </div>
+
+        <p:dialog header="Login Consultoria Produtos" closable="false" visible="true" resizable="false" 
+                  draggable="false" id="loginDialog">
+            <h:form id="loginForm">
+                <p:messages id="loginMessages"/>
+
+
+                <h:panelGrid columns="2" cellpadding="4" id="loginPanelGrid">
+                    <h:panelGroup>
+
+                        <h:graphicImage library="imagens" name="Login.png"/>
+                        <h:outputLabel/>
+                    </h:panelGroup>
+
+                    <h:panelGroup>
+
+                        <h:panelGrid columns="2" cellpadding="4">
+
+
+                            <p:outputLabel for="username" value="Usuário:"/>
+                            <p:inputText id="username" required="true" requiredMessage="Nome de usuário é obrigatório." 
+                                         size="20"/>
+
+                            <p:outputLabel for="password" value="Senha:"/>
+                            <p:password id="password" size="20" required="true" requiredMessage="Senha é obrigatória."/>
+
+                            <p:commandButton value="Entrar" id="loginEnterButton" icon="ui-icon ui-icon-key"
+                                             action="Home.xhtml" update="@form" process="username"/>
+                            <p:commandButton id="lostPasswordLink" onclick="PF('loginPasswordRecover').show();
+                                    return false;" icon="ui-icon ui-icon-help" style="float: right;"/>
+
+                            <p:tooltip for="lostPasswordLink" value="Ajuda para recuperar senha." showEffect="fade"/>
+                        </h:panelGrid>
+                    </h:panelGroup>
+
+                </h:panelGrid>
+
+                <p:button icon="ui-icon ui-icon-unlocked" style="float: right" outcome="Home"/>
+
+
+            </h:form>
+        </p:dialog>
+
+        <!--Dialog requesting E-mail to the password recover.--> 
+        <p:dialog widgetVar="loginPasswordRecover" header="Recuperação de senha" modal="true" 
+                  resizable="false" draggable="false" id="dialogEmailRequest">
+            <h:form style="line-height: 16px">
+                <p:outputLabel for="email" value="Digite seu e-mail de cadastro: "/>
+                <br/>
+                <p:inputText id="email" size="40" />
+                <p:commandButton id="okButton" value="Ok" onclick="PF('loginPasswordRecover').hide();
+                        PF('msgEmailConfirm').show();
+                        return false;"/>
+            </h:form>
+        </p:dialog>
+
+        <!--Confirmation dialog about sending mail to password recovering.-->
+        <p:dialog widgetVar="msgEmailConfirm" header="Confirmação de recuperação de senha" modal="true" 
+                  resizable="false" closable="false" draggable="false" id="dialogConfirmationMessage">
+            <h:form style="line-height: 16px">
+                <p:outputLabel value="Uma mensagem foi enviada para o e-mail "/>
+                <span style="font-weight: bold">usuario@dominio.com,</span>
+                <br/>
+                <p:outputLabel value="contendo instruções para recuperação da senha."/>
+                <br/>
+                <p:commandButton id="okButton" value="Ok" onclick="PF('msgEmailConfirm').hide();"/>
+            </h:form>
+        </p:dialog>
+
+    </h:body>
 </html>
