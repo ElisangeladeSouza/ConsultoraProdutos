@@ -14,26 +14,27 @@
     <h:body>
 
         <header>
-            <h:link outcome="/Home">
+            <h:link outcome="/Home.xhtml">
                 <p:graphicImage library="imagens" name="logo_mercia_mini.png" styleClass="logo"/>
             </h:link> 
         </header>
 
-        <div>
-            <h:form>
-                <p:menubar styleClass="labelMenu">
-                    <p:submenu label="Cadastrar" >
-                        <p:menuitem  value="Cliente"/>
-                    </p:submenu>
+        <h:form style="padding: 1px;margin-top: 5px">
+            
+            <p:menubar styleClass="labelMenu">
+                <p:submenu label="#{msg.cadastre}" >
+                    <p:menuitem  value="#{msg.customer}" outcome="/cliente/Cliente" icon="ui-icon-person"/>
+                </p:submenu>
 
-                    <p:menuitem value="Sair" />
-                    <f:facet name="options">
-                        <p:inputText valueChangeListener="Buscar Clientes" style="margin-right: 10px" />
-                        <p:commandButton type="button" value="Buscar" />
-                    </f:facet>
-                </p:menubar>
-            </h:form>
-        </div>
+                <p:menuitem value="#{msg.exit}" icon="ui-icon-power"/>
+                <f:facet name="options">
+                    <p:inputText valueChangeListener="Buscar Clientes" style="margin-right: 10px" />
+                    <p:commandButton type="button" value="Buscar" />
+                </f:facet>
+                
+            </p:menubar>
+            
+        </h:form>
 
         <div id="content">
             <ui:insert name="corpo"></ui:insert>

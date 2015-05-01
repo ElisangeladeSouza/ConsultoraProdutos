@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/templates/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="corpo">
+        <p:panel id="panel" header="Cadastro de Cliente" style="padding: 20px">
+            <h:form id="formCliente" >
+                <h:panelGroup>
+                <p:growl/>
+                    <h:panelGrid columns="2" cellpadding="7">
+                        <p:outputLabel value="#{msg.name}: " for="nome"/>
+                        <p:inputText id="nome" required="true"/>
+
+                        <p:outputLabel value="#{msg.product}: " for="produto"/>
+                        <p:inputText id="produto" required="true"/>
+
+                        <p:outputLabel value="#{msg.value}: " for="valor"/>
+                        <p:inputText id="valor" required="true"/>
+
+                    </h:panelGrid>
+                <p:commandButton id="botaoSalvar" value="#{msg.save}"/>
+                <p:button id="botaCancelar" value="#{msg.cancel}" />
+                </h:panelGroup>
+            </h:form>
+        </p:panel>    
+    </ui:define>
+
+</ui:composition>
