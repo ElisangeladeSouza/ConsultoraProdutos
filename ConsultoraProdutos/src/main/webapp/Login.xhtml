@@ -8,7 +8,7 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="estilos.css"/>
-        <link rel="icon" type="image/x-icon" href="http://localhost:8080/consultoraProdutos/resources/imagens/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="http://localhost:8083/ConsultoraProdutos/resources/imagens/favicon.ico" />
         <title><ui:insert name="title">Consultora de Produtos - Login</ui:insert></title>
     </h:head>
 
@@ -20,8 +20,7 @@
         <p:dialog header="Login Consultoria Produtos" closable="false" visible="true" resizable="false" 
                   draggable="false" id="loginDialog">
             <h:form id="loginForm">
-                <p:messages id="loginMessages"/>
-
+                <p:growl id="mensagens" autoUpdate="true"/>
 
                 <h:panelGrid columns="2" cellpadding="4" id="loginPanelGrid">
                     <h:panelGroup>
@@ -36,14 +35,16 @@
 
 
                             <p:outputLabel for="username" value="Usuário:"/>
-                            <p:inputText id="username" required="true" requiredMessage="Nome de usuário é obrigatório." 
-                                         size="20"/>
+                            <p:inputText id="username" required="true" requiredMessage="#{msg.mandatoryLogin}" 
+                                         size="20" value="#{contaBean.conta.usuario}"/>
 
                             <p:outputLabel for="password" value="Senha:"/>
-                            <p:password id="password" size="20" required="true" requiredMessage="Senha é obrigatória."/>
+                            <p:password id="password" size="20" required="true" requiredMessage="#{msg.mandatoryPassword}" 
+                                        value="#{contaBean.conta.senha}"/>
 
                             <p:commandButton value="Entrar" id="loginEnterButton" icon="ui-icon ui-icon-key"
-                                             action="Home.xhtml" update="@form" process="username"/>
+                                             action="#{contaBean.login}" process="@this" update="mensagens"/>
+                            
                             <p:commandButton id="lostPasswordLink" onclick="PF('loginPasswordRecover').show();
                                     return false;" icon="ui-icon ui-icon-help" style="float: right;"/>
 
@@ -53,7 +54,7 @@
 
                 </h:panelGrid>
 
-                <p:button icon="ui-icon ui-icon-unlocked" style="float: right" outcome="Home"/>
+                <p:button icon="ui-icon ui-icon-unlocked" style="float: right" outcome="Home.xhtml"/>
 
 
             </h:form>

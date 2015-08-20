@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/templates/cabecalho.xhtml">
+
+<!--    <f:metadata>
+        <f:viewParam name="login" value="#{loginBean.login}"/>
+    </f:metadata>
+
+    <ui:define id="uiTituloLogin" name="titulo">#{loginBean.editando ? msg.editCadastreLogin : msg.newRegisterLogin} | #{msg.systemName}</ui:define>
+
+    <ui:define id="uiConteudoLogin" name="conteudo">
+
+        <p:fieldset id="fieldsetLogin" legend="#{loginBean.editando ? msg.editCadastreCount : msg.newRegisterLogin}">
+            <h:form id="formCadastroLogin">
+                <p:growl id="mensagens" autoUpdate="true"/>
+                
+                <h:panelGrid id="gridObrigatoriosLogin" columns="2">
+                    
+                    <p:outputLabel for="usuario" value="#{msg.user}:"/>
+                    <p:inputText id="usuario" value="#{loginBean.login.usuario}" requiredMessage="#{msg.aUserIsRequired}"
+                                 required="true" size="25"  maxlength="200"/>
+
+                    <p:outputLabel for="senha" value="#{msg.password}:"/>
+                    <p:password id="senha" value="#{loginBean.login.senha}" requiredMessage="#{msg.aPasswordIsRequired}"
+                                promptLabel="Digite sua senha" weakLabel="Senha Fraca" goodLabel="Senha Boa" strongLabel="Senha Forte" 
+                                feedback="true" required="true"  maxlength="40"/>
+                    
+                    <p:outputLabel for="confereSenha" value="#{msg.providesPassword}:"/>
+                    <p:password id="confereSenha" value="#{loginBean.confereSenha}" requiredMessage="#{msg.aProvidesPasswordIsRequired}"
+                                promptLabel="Digite sua senha" weakLabel="Senha Fraca" goodLabel="Senha Boa" strongLabel="Senha Forte"
+                                feedback="true" required="true" maxlength="40"/>
+                    
+                    <p:outputLabel for="funcao" value="#{msg.function}:"/>
+                    <p:selectOneMenu id="funcao" value="#{loginBean.login.permissao}" required="true">
+                        <f:selectItem itemLabel="#{msg.selectIt}.." noSelectionOption="true"/>
+                        <f:selectItems value="#{loginBean.permissao}" itemValue="#{permissoes}" itemLabel="#{permissoes.descricao}" var="permissoes"/>
+                    </p:selectOneMenu>
+                    
+                </h:panelGrid>
+
+                <p:toolbar id="toolbarLogin" style="margin-top: 10px;">
+                    <f:facet name="left">
+                        <p:commandButton style="font-size: 13px;" value="#{msg.save}" 
+                                         action="#{loginBean.salvar}"  id="botaoSalvar" 
+                                         update="@form" icon="ui-icon ui-icon-disk">
+                        </p:commandButton>
+
+                        <p:button style="font-size: 13px;" value="#{msg.cancel}"
+                                  id="botaoCancelar" outcome="/login/PesquisaLogin"
+                                  icon="fa fa-times" rendered="#{loginBean.editando}" 
+                                  disabled="#{botaoEditar}">
+                        </p:button>
+
+                    </f:facet>
+
+                    <f:facet name="right">
+                        <p:button style="font-size: 13px;" value="#{msg.searchLogin}"
+                                  id="botaoPesquisar" outcome="/login/PesquisaLogin"
+                                  icon="ui-icon ui-icon-search" rendered="#{loginBean.editando eq 'false'}">
+                        </p:button>
+                    </f:facet>
+
+                </p:toolbar>
+                <p:blockUI id="blockUILogin" block="formCadastroLogin" trigger="botaoSalvar"/>
+            </h:form>
+        </p:fieldset>
+    </ui:define>-->
+</ui:composition>

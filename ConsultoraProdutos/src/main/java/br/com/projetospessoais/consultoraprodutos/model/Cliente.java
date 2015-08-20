@@ -1,4 +1,4 @@
-package br.com.projetospessoas.consultoraprodutos.model;
+package br.com.projetospessoais.consultoraprodutos.model;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author elisangela
+ * @author elisangela <elysangeladesouza@gmail.com>
  */
 @Entity
 public class Cliente implements Serializable {
@@ -30,6 +30,9 @@ public class Cliente implements Serializable {
     
     @Column(name = "valor")
     private double valor;
+    
+    @Column(name = "total")
+    private double total;
 
     public Cliente() {
     }
@@ -66,13 +69,18 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
+    public double getTotal() {
+        return total;
+    }
+
+    public void setTotal(double total) {
+        this.total = total;
+    }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
-        hash = 53 * hash + Objects.hashCode(this.nome);
-        hash = 53 * hash + Objects.hashCode(this.produto);
-        hash = 53 * hash + (int) (Double.doubleToLongBits(this.valor) ^ (Double.doubleToLongBits(this.valor) >>> 32));
+        hash = 31 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -88,21 +96,7 @@ public class Cliente implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
-        if (!Objects.equals(this.nome, other.nome)) {
-            return false;
-        }
-        if (!Objects.equals(this.produto, other.produto)) {
-            return false;
-        }
-        if (Double.doubleToLongBits(this.valor) != Double.doubleToLongBits(other.valor)) {
-            return false;
-        }
         return true;
-    }
-
-    @Override
-    public String toString() {
-        return "Cliente{" + "id=" + id + ", nome=" + nome + ", produto=" + produto + ", valor=" + valor + '}';
     }
     
 }

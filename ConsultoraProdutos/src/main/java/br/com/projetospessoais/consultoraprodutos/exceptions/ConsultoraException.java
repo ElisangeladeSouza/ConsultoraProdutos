@@ -1,4 +1,4 @@
-package br.com.projetospessoas.consultoraprodutos.exceptions;
+package br.com.projetospessoais.consultoraprodutos.exceptions;
 
 /**
  *
