@@ -8,7 +8,24 @@
     
     <ui:define name="corpo">
         <p:panel id="panel" header="Cadastro de Produtos" style="padding: 20px">
-            
+            <h:form id="formProdutos" >
+                <h:panelGroup>
+                <p:growl/>
+                    <h:panelGrid columns="2" cellpadding="7">
+                        <p:outputLabel value="#{msg.product}: " for="produto"/>
+                        <p:inputText id="produto" required="true" />
+                        
+                        <p:outputLabel value="#{msg.value}: " for="valor"/>
+                        <p:inputText id="valor" required="true"/>
+                        
+                        <p:outputLabel value="#{msg.quantity}: " for="quantidade"/>
+                        <p:inputText id="quantidade" required="true"/>
+                        
+                        <p:commandButton id="botaoSalvar" value="#{msg.save}" 
+                                 update="@form" icon="ui-icon ui-icon-disk"/>
+                    </h:panelGrid>
+                </h:panelGroup>
+            </h:form>    
         </p:panel>
     </ui:define>    
 </ui:composition>
