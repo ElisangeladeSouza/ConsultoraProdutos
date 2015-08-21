@@ -13,17 +13,20 @@
                 <p:growl/>
                     <h:panelGrid columns="2" cellpadding="7">
                         <p:outputLabel value="#{msg.name}: " for="nome"/>
-                        <p:inputText id="nome" required="true"/>
+                        <p:inputText id="nome" required="true" value="#{clienteBean.cliente.nome}"/>
 
                         <p:outputLabel value="#{msg.product}: " for="produto"/>
-                        <p:inputText id="produto" required="true"/>
+                        <p:inputText id="produto" required="true" value="#{clienteBean.cliente.produto}"/>
 
                         <p:outputLabel value="#{msg.value}: " for="valor"/>
-                        <p:inputText id="valor" required="true"/>
+                        <p:inputText id="valor" required="true" value="#{clienteBean.cliente.valor}"/>
+                        
+                        <p:outputLabel value="#{msg.total}: " for="total"/>
+                        <p:inputText id="total" value="#{clienteBean.cliente.total}"/>
 
                     </h:panelGrid>
-                <p:commandButton id="botaoSalvar" value="#{msg.save}"/>
-                <p:button id="botaCancelar" value="#{msg.cancel}" />
+                <p:commandButton id="botaoSalvar" value="#{msg.save}" action="#{clienteBean.salvar}" 
+                                 update="@form" icon="ui-icon ui-icon-disk"/>
                 </h:panelGroup>
             </h:form>
         </p:panel>    

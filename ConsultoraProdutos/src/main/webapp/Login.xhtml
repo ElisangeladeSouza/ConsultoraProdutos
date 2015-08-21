@@ -13,8 +13,8 @@
     </h:head>
 
     <h:body>
-        <div style="padding-top: 50px; text-align: center">
-            <h:graphicImage library="imagens" name="logo_mercia_mini.png"/>
+        <div style="padding-top: 10px; text-align: center">
+            <h:graphicImage library="imagens" name="cosmeticos.jpg"/>
         </div>
 
         <p:dialog header="Login Consultoria Produtos" closable="false" visible="true" resizable="false" 
@@ -23,32 +23,21 @@
                 <p:growl id="mensagens" autoUpdate="true"/>
 
                 <h:panelGrid columns="2" cellpadding="4" id="loginPanelGrid">
-                    <h:panelGroup>
-
-                        <h:graphicImage library="imagens" name="Login.png"/>
-                        <h:outputLabel/>
-                    </h:panelGroup>
 
                     <h:panelGroup>
 
                         <h:panelGrid columns="2" cellpadding="4">
 
-
                             <p:outputLabel for="username" value="Usuário:"/>
                             <p:inputText id="username" required="true" requiredMessage="#{msg.mandatoryLogin}" 
-                                         size="20" value="#{contaBean.conta.usuario}"/>
+                                         size="20"/>
 
                             <p:outputLabel for="password" value="Senha:"/>
-                            <p:password id="password" size="20" required="true" requiredMessage="#{msg.mandatoryPassword}" 
-                                        value="#{contaBean.conta.senha}"/>
+                            <p:password id="password" size="20" required="true" requiredMessage="#{msg.mandatoryPassword}"/>
 
                             <p:commandButton value="Entrar" id="loginEnterButton" icon="ui-icon ui-icon-key"
                                              action="#{contaBean.login}" process="@this" update="mensagens"/>
                             
-                            <p:commandButton id="lostPasswordLink" onclick="PF('loginPasswordRecover').show();
-                                    return false;" icon="ui-icon ui-icon-help" style="float: right;"/>
-
-                            <p:tooltip for="lostPasswordLink" value="Ajuda para recuperar senha." showEffect="fade"/>
                         </h:panelGrid>
                     </h:panelGroup>
 

@@ -22,28 +22,25 @@
 
         <h:form style="padding: 1px;margin-top: 5px">
 
-            <!--            <p:menubar styleClass="labelMenu">
-                            <p:submenu label="#{msg.cadastre}" >
-                                <p:menuitem  value="#{msg.customer}" outcome="/cliente/Cliente" icon="ui-icon-person"/>
-                            </p:submenu>
-            
-                            <p:menuitem value="#{msg.exit}" icon="ui-icon-power"/>
-                            
-                            <f:facet name="opcoes">
-                                <p:commandButton type="button" value="Logout" icon="ui-icon-extlink"/>
-                            </f:facet>
-                            
-                        </p:menubar>-->
-            
-            <p:tabMenu >
-                <p:menuitem value="Home" outcome="/Home.xhtml" icon="ui-icon-home">
-                    <f:param name="i" value="0" />
-                </p:menuitem>
-                <p:menuitem value="Clientes" outcome="/cliente/Cliente.xhtml" icon=".ui-icon-person">
-                    <f:param name="i" value="1" />
-                </p:menuitem>
-            </p:tabMenu>
+            <p:menubar styleClass="labelMenu">
+                <p:submenu id="cadastroCliente" label="#{msg.cadastre}" >
+                    <p:menuitem  id="cliente" value="#{msg.customer}" outcome="/cliente/CadastroCliente.xhtml" icon="ui-icon-person"/>
+                </p:submenu>
+                
+                <p:submenu id="cadastroProduto" label="#{msg.cadastre}">
+                    <p:menuitem id="produto" value="#{msg.product}" icon="ui-icon-person"/>
+                </p:submenu>
+                
+                <p:submenu id="cadastroRelatorios" label="Relátorios">
+                    <p:menuitem id="relatorios" value="Relatórios"/>
+                </p:submenu>
 
+<!--                <f:facet name="opcoes">
+                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink"/>
+                </f:facet>-->
+
+            </p:menubar>
+            
         </h:form>
 
         <div id="content">
