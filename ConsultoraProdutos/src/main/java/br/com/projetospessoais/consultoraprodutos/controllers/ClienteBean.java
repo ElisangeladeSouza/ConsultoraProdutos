@@ -20,8 +20,6 @@ public class ClienteBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private static final Log LOGGER = LogFactory.getLog(ClienteBean.class);
-
     @Inject
     private Cliente cliente;
 

@@ -17,7 +17,7 @@ import org.apache.commons.logging.LogFactory;
  * Esta classe representa um DAO genérico e contém todos os métodos básicos para
  * efetuar um CRUD.
  *
- * @author cassio
+ * @author elisangela <elysangeladesouza@gmail.com>
  * @param <T>
  */
 public abstract class DaoAbstract<T> implements Serializable {

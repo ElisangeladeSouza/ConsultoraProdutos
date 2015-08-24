@@ -10,7 +10,7 @@
         <p:panel id="panel" header="Cadastro de Cliente" style="padding: 20px">
             <h:form id="formCliente" >
                 <h:panelGroup>
-                <p:growl/>
+                <p:growl id="mensagens" autoUpdate="true"/>
                     <h:panelGrid columns="2" cellpadding="7">
                         <p:outputLabel value="#{msg.name}: " for="nome"/>
                         <p:inputText id="nome" required="true" value="#{clienteBean.cliente.nome}"/>

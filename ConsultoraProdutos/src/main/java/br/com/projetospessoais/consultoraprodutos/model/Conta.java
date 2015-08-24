@@ -20,6 +20,7 @@ public class Conta implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_conta")
     private Long id;
 
     @Column(name = "usuario", nullable = false, length = 25)
