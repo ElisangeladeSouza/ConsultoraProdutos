@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/templates/cabecalho.xhtml">
+
+    <ui:define id="uiPesquisaLogin" name="titulo">#{msg.searchCadastreCount} | #{msg.systemName}</ui:define>
+
+    <ui:define id="conteudoPesquisaConta" name="conteudo">
+
+        <p:fieldset legend="#{msg.searchCadastreCount}">
+
+            <h:form id="formPesquisaConta">
+
+                <p:growl id="mensagens" autoUpdate="true"/>
+
+                <p:toolbar >
+                    <f:facet name="right">
+                        <p:button value="#{msg.newRegister}" id="botaoTelaCadastro"  icon="ui-icon ui-icon-pencil" outcome="/conta/CadastroConta"/>
+                    </f:facet>
+                </p:toolbar>
+
+                <p:dataTable id="datatablePesquisaConta" var="conta" value="#{contaBean.contas}"
+                             paginatorAlwaysVisible="false" style="margin-top: 1px; " rows="10" 
+                             paginatorPosition="bottom" emptyMessage="#{msg.noFoundsRecord}" paginator="true" widgetVar="pesquisaConta"
+                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
+                             {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20,50,100"
+                             scrollable="true" scrollRows="10" scrollHeight="210">
+
+                    <f:facet name="header">
+                        <p:outputPanel id="panelFiltroLogin">
+                            <p:inputText id="globalFilter" onkeyup="PF('pesquisaConta').filter()" style="width:300px" placeholder="#{msg.searchAnyField}"/>
+                        </p:outputPanel>
+                    </f:facet>
+
+                    <p:column headerText="#{msg.id}" style="text-align: center" width="1.2%" filterMatchMode="exact" filterBy="#{conta.id}" filterStyle="width: 20px; display:none">
+                        <h:outputText id="id" value="#{conta.id}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msg.user}" width="80" filterMatchMode="contains" filterBy="#{conta.userName}" filterStyle="width: 300px; display:none">
+                        <h:outputText id="usuario" value="#{conta.userName}"/>
+                    </p:column>
+
+                    <p:column headerText="#{msg.password}" width="80" filterMatchMode="contains" filterBy="#{conta.password}" filterStyle="width: 300px; display:none">
+                        <h:outputText id="senha" value="#{conta.password}"/>
+                    </p:column>
+                    
+                    <p:column headerText="#{msg.function}" width="80" filterMatchMode="contains" filterBy="#{conta.permissao}" filterStyle="width: 300px; display:none">
+                        <h:outputText id="permissao" value="#{conta.permissao}"/>
+                    </p:column>
+
+                    <p:column id="acoes" headerText="#{msg.actions}" style="text-align: center" width="25">
+                        <p:button id="botaoVisualizar" title="#{msg.view}" icon="ui-icon ui-icon-extlink" style="font-size: 10px"
+                                  outcome="/conta/VisualizaConta">
+                            <f:param  name="conta" value="#{conta.id}"/>
+                            <p:tooltip for="botaoVisualizar" value="#{msg.viewSelectedRowDetails}"/>
+                        </p:button>   
+
+                        <p:button id="botaoEditar" title="#{msg.edit}" icon="ui-icon ui-icon-pencil" style="font-size: 10px" outcome="/conta/CadastroConta">
+                            <f:param  name="conta" value="#{conta.id}"/>
+                            <p:tooltip for="botaoEditar" value="#{msg.editSelectedRow}"/>
+                        </p:button>
+
+                        <p:commandButton id="botaoExcluir" title="#{msg.delete}" icon="ui-icon ui-icon-trash" style="font-size: 10px"
+                                         action="#{contaBean.excluir}" process="@this" update="datatablePesquisaConta">
+                            <f:setPropertyActionListener value="#{conta}" target="#{contaBean.contaSelecionado}"/>
+                            <p:tooltip for="botaoExcluir" value="#{msg.deleteSelectedRow}"/>
+
+                            <p:confirm icon="ui-icon-alert" header="#{msg.exclusionCadastreConta}" message="#{msg.realyExcludeLogin}"/>
+
+                        </p:commandButton>
+                    </p:column>
+
+                </p:dataTable>
+            </h:form>
+        </p:fieldset>
+    </ui:define>
+</ui:composition>
+

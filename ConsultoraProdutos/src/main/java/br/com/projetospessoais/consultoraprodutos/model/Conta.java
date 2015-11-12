@@ -24,10 +24,10 @@ public class Conta implements Serializable {
     private Long id;
 
     @Column(name = "usuario", nullable = false, length = 25)
-    private String usuario;
+    private String userName;
 
     @Column(name = "senha", nullable = false, length = 40)
-    private String senha;
+    private String password;
 
     @Column(name = "permissao", nullable = true)
     private Permissao permissao;
@@ -43,20 +43,20 @@ public class Conta implements Serializable {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Permissao getPermissao() {
@@ -69,7 +69,7 @@ public class Conta implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 5;
+        int hash = 7;
         hash = 37 * hash + Objects.hashCode(this.id);
         return hash;
     }

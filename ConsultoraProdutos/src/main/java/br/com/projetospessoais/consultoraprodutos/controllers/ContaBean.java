@@ -42,9 +42,12 @@ public class ContaBean implements Serializable {
 
     private String confereSenha;
     
+    private final String usuarioLogado;
+    
 
     public ContaBean() {
         permissoes = Arrays.asList(Permissao.values());
+        usuarioLogado = (String) SecurityUtils.getSubject().getPrincipal();
     }
 
     public List<Conta> getContas() {
@@ -57,7 +60,7 @@ public class ContaBean implements Serializable {
     }
 
     public void salvar() throws ConsultoraException {
-        if (conta.getSenha() == null ? confereSenha == null : conta.getSenha().equals(confereSenha)) {
+        if (conta.getPassword()== null ? confereSenha == null : conta.getPassword().equals(confereSenha)) {
             this.contaService.save(conta);
             if (getEditando()) {
                 FacesUtil.mensagemSucesso("Cadastro de usuário '" + conta.getId() + "' atualizado com sucesso!");
@@ -79,7 +82,7 @@ public class ContaBean implements Serializable {
 
     public void login() throws IOException {
         try {
-            SecurityUtils.getSubject().login(new UsernamePasswordToken(conta.getUsuario(), conta.getSenha()));
+            SecurityUtils.getSubject().login(new UsernamePasswordToken(conta.getUserName(), conta.getUserName()));
             SavedRequest savedRequest = WebUtils.getAndClearSavedRequest(Faces.getRequest());
             Faces.redirect(savedRequest != null ? savedRequest.getRequestUrl() : "/ConsultoraProdutos/Home.xhtml");
         } catch (AuthenticationException e) {
@@ -135,4 +138,12 @@ public class ContaBean implements Serializable {
         this.confereSenha = confereSenha;
     }
 
+    public List<Permissao> getPermissoes() {
+        return permissoes;
+    }
+
+    public String getUsuarioLogado() {
+        return usuarioLogado;
+    }
+    
 }

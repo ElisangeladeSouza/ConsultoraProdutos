@@ -30,11 +30,11 @@
 
                             <p:outputLabel for="username" value="Usuário:"/>
                             <p:inputText id="username" required="true" requiredMessage="#{msg.mandatoryLogin}" 
-                                         size="20" value="#{contaBean.conta.usuario}"/>
+                                         size="20" value="#{contaBean.conta.userName}"/>
 
                             <p:outputLabel for="password" value="Senha:"/>
                             <p:password id="password" size="20" required="true" requiredMessage="#{msg.mandatoryPassword}"
-                                        value="#{contaBean.conta.senha}"/>
+                                        value="#{contaBean.conta.password}"/>
 
                             <p:commandButton value="Entrar" id="loginEnterButton" icon="ui-icon ui-icon-key"
                                              action="#{contaBean.login}" process="@this" update="mensagens"/>
