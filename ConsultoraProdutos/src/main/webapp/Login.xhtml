@@ -8,7 +8,7 @@
     <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="estilos.css"/>
-        <link rel="icon" type="image/x-icon" href="http://localhost:8083/ConsultoraProdutos/resources/imagens/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/ConsultoraProdutos/resources/imagens/favicon.ico" />
         <title><ui:insert name="title">Consultora de Produtos - Login</ui:insert></title>
     </h:head>
 
@@ -17,35 +17,32 @@
             <h:graphicImage library="imagens" name="cosmeticos.jpg"/>
         </div>
 
-        <p:dialog header="Login Consultoria Produtos" closable="false" visible="true" resizable="false" 
+        <p:dialog header="Login Consultora de Produtos" closable="false" visible="true" resizable="false" 
                   draggable="false" id="loginDialog">
-            <h:form id="loginForm">
-                <p:growl id="mensagens" autoUpdate="true"/>
+            <h:form id="loginForm" prependId="false">
+                <p:messages id="loginMensagens" autoUpdate="true" closable="true"/>
 
                 <h:panelGrid columns="2" cellpadding="4" id="loginPanelGrid">
 
-                    <h:panelGroup>
+                    <h:panelGroup id="loginPanelGroup">
 
                         <h:panelGrid columns="2" cellpadding="4">
 
                             <p:outputLabel for="username" value="Usuário:"/>
                             <p:inputText id="username" required="true" requiredMessage="#{msg.mandatoryLogin}" 
-                                         size="20" value="#{contaBean.conta.userName}"/>
+                                         size="20" value="#{usuarioBean.usuario.userName}"/>
 
                             <p:outputLabel for="password" value="Senha:"/>
                             <p:password id="password" size="20" required="true" requiredMessage="#{msg.mandatoryPassword}"
-                                        value="#{contaBean.conta.password}"/>
+                                        value="#{usuarioBean.usuario.password}"/>
 
                             <p:commandButton value="Entrar" id="loginEnterButton" icon="ui-icon ui-icon-key"
-                                             action="#{contaBean.login}" process="@this" update="mensagens"/>
+                                             update="@form" process="@this" action="#{usuarioBean.login}" ajax="false"/>
                             
                         </h:panelGrid>
                     </h:panelGroup>
 
                 </h:panelGrid>
-
-                <p:button icon="ui-icon ui-icon-unlocked" style="float: right" outcome="Home.xhtml"/>
-
 
             </h:form>
         </p:dialog>

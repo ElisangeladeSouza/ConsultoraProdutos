@@ -1,7 +1,9 @@
 package br.com.projetospessoais.consultoraprodutos.exceptions;
 
 /**
- *
+ * A classe NegocioException representa um tipo de exceção usado para 
+ * representar erros de negócio.
+ * 
  * @author elisangela
  */
 public class NegocioException extends RuntimeException {

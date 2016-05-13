@@ -4,8 +4,14 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
 
+    <!--Aponta para a fabrica de exceptionhandler gerenciado pelo JSF, que trata exceções lançadas. (By Cássio Oliveira <cassio@cassioliveira.com.br>)-->
+    <factory>
+        <exception-handler-factory>
+            br.com.projetospessoais.consultoraprodutos.util.jsf.JsfExceptionHandlerFactory
+        </exception-handler-factory>
+    </factory>
+    
     <application>
-        
         <!-- Set the target of file .properties with the strings to the view 
         (internationalization). -->
         <resource-bundle>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<!--    Página que define quais papeis serão atribuidos a um conjunto de 
+    limitações de acesso às telas da camada de apresentação. Para que pudesse 
+    ser atribuido mais de um papel para determinado recurso, foi necessário a 
+    utilização de um componente do JSTL (c:set) para aceitar as condições de 
+    uso do método isUserInRole(), responsável por receber o papel informado e 
+    retornar true  ou false caso o usuário logado tivesse a permissão de acesso 
+    adequada, respectivamente.-->
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    
+    <div class="menu">
+        <ui:insert name="menu">
+            <h:form>
+
+                <!--Permissões do diretor que tem acesso total e irrestrito-->
+                <c:set var="podeVerTudo" value="#{request.isUserInRole('Administrador')}" scope="request"/> 
+            </h:form>    
+        </ui:insert>
+    </div>    
+</html>

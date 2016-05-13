@@ -1,0 +1,1 @@
+INSERT INTO usuario VALUES (1,'Elisangela','123','admin','Administradores') ON CONFLICT DO NOTHING;

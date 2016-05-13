@@ -10,7 +10,8 @@ import java.io.Serializable;
  */
 public enum Permissao implements Serializable {
 
-    ADMIN("Administrador");
+    ADMIN("Administrador"),
+    CONVIDADO("Convidado");
 
     private final String descricao;
 

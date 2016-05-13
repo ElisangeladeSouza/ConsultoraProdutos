@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/ConsultoraProdutos/resources/imagens/favicon.ico" />
+        <title><ui:insert name="title">Consultora Produtos - Acesso Negado</ui:insert></title>
+    </h:head>
+    <body>
+        <h:form>
+            <p:panel id="panelAcessoNegado" style="alignment-adjust: central">
+                <div class="box-acesso-negado">
+                    <h1 id="titulo-acesso-negado">Acesso negado!!!</h1>
+                    <div id="mensagem-acesso-negado">Você não tem permissão para acessar esta página.</div>
+                    <p:button id="voltar" value="Voltar" outcome="Home.xhtml"/>
+                </div>
+            </p:panel>    
+        </h:form>
+    </body>
+</html>

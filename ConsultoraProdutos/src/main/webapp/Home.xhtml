@@ -8,43 +8,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:define name="corpo">
-        <p:panel id="panelPesquisaClientes" header="Contas de Clientes" style="padding: 20px">
-            <h:form id="formPesquisaClientes">
-                <p:dataTable id="datatablePesquisaClientes" var="cliente" value="#{clienteBean.clientes}"
-                             paginatorAlwaysVisible="false" style="margin-top: 1px; " rows="10" 
-                             paginatorPosition="bottom" emptyMessage="#{msg.noFoundsRecord}" paginator="true" widgetVar="pesquisaClientes"
-                             paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
-                             {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20,50,100"
-                             scrollable="true" scrollRows="10" scrollHeight="210">
-                    
-                    <f:facet name="header">
-                        <p:outputPanel id="panelFiltroClientes">
-                            <p:inputText id="globalFilter" onkeyup="PF('pesquisaClientes').filter()" style="width:300px" placeholder="#{msg.searchAnyField}"/>
-                        </p:outputPanel>
-                    </f:facet>
-                    
-                    <p:column id="id" headerText="#{msg.id}" style="text-align: center" width="1.2%" filterMatchMode="exact" filterBy="#{cliente.id}" filterStyle="width: 20px; display:none">
-                        <h:outputText value="#{cliente.id}"/>
-                    </p:column>
-                    
-                    <p:column id="nome" headerText="#{msg.name}" width="40" filterMatchMode="contains" filterBy="#{cliente.nome}" filterStyle="width: 300px; display:none">
-                        <h:outputText value="#{cliente.nome}"/>
-                    </p:column>
-                    
-                    <p:column headerText="#{msg.product}" style="text-align: center" width="20" filterMatchMode="contains" filterBy="#{cliente.produto}" filterStyle="width: 80px; display:none">
-                        <h:outputText id="produto" value="#{cliente.produto}"/>
-                    </p:column>
-                    
-                    <p:column headerText="#{msg.value}" style="text-align: center" width="20" filterMatchMode="contains" filterBy="#{cliente.valor}" filterStyle="width: 80px; display:none">
-                        <h:outputText id="valor" value="#{cliente.valor}"/>
-                    </p:column>
-                    
-                    <p:column headerText="#{msg.total}" style="text-align: center" width="20" filterMatchMode="contains" filterBy="#{cliente.total}" filterStyle="width: 80px; display:none">
-                        <h:outputText id="total" value="#{cliente.total}"/>
-                    </p:column>
-                </p:dataTable>
-            </h:form>
-        </p:panel>
+        <h2 id="welcomeHomeMessage" align="center">Seja bem-vindo(a) Consultor(a)!</h2>
     </ui:define>
 
 </ui:composition>

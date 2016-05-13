@@ -1,18 +1,18 @@
 package br.com.projetospessoais.consultoraprodutos.dao;
 
-import br.com.projetospessoais.consultoraprodutos.model.Conta;
+import br.com.projetospessoais.consultoraprodutos.model.Usuario;
 import java.io.Serializable;
 
 /**
  *
  * @author elisangela <elysangeladesouza@gmail.com>
  */
-public class ContaDao extends DaoAbstract<Conta> implements Serializable {
+public class UsuarioDao extends DaoAbstract<Usuario> implements Serializable {
     
     private static final long serialVersionUID = 1L;
 
-    public ContaDao() {
-        super(Conta.class);
+    public UsuarioDao() {
+        super(Usuario.class);
     }
     
 }

@@ -9,10 +9,12 @@
     <h:head>
         <title><ui:insert name="titulo">#{msg.systemName}</ui:insert></title>
         <h:outputStylesheet library="css" name="estilos.css"/>
-        <link rel="icon" type="image/x-icon" href="http://localhost:8083/ConsultoraProdutos/resources/imagens/favicon.ico" />
+        <link rel="icon" type="image/x-icon" href="http://localhost:8080/ConsultoraProdutos/resources/imagens/favicon.ico" />
     </h:head>
 
     <h:body>
+
+        <ui:include src="permissoes-telas.xhtml"/>
 
         <header>
             <h:link outcome="/Home.xhtml">
@@ -24,25 +26,23 @@
 
             <p:menubar styleClass="labelMenu">
                 <p:menuitem id="home" value="#{msg.home}" outcome="/Home.xhtml" icon="ui-icon-home"/>
-                
+
                 <p:submenu id="cadastroCliente" label="#{msg.cadastreCustomer}" icon="ui-icon-person" >
                     <p:menuitem  id="cliente" value="#{msg.customer}" outcome="/cliente/CadastroCliente.xhtml" icon="ui-icon-person"/>
                 </p:submenu>
-                
+
                 <p:submenu id="cadastroProduto" label="#{msg.cadastreProduct}" icon="ui-icon-cart">
                     <p:menuitem id="produto" value="#{msg.product}" outcome="/produto/CadastroProdutos.xhtml" icon="ui-icon-cart"/>
                 </p:submenu>
-                
+
                 <p:submenu id="cadastroRelatorios" label="Relátorios" icon="ui-icon-note">
                     <p:menuitem id="relatorios" value="Relatórios" icon="ui-icon-note"/>
                 </p:submenu>
-
-<!--                <f:facet name="opcoes">
-                    <p:commandButton type="button" value="Logout" icon="ui-icon-extlink"/>
-                </f:facet>-->
+                
+                <p:menuitem id="sair" value="Sair" icon="ui-icon-power" action="#{usuarioBean.logout}"/>
 
             </p:menubar>
-            
+
         </h:form>
 
         <div id="content">
