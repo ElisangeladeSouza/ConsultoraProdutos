@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 
 <!--    Página que define quais papeis serão atribuidos a um conjunto de 
@@ -17,8 +18,8 @@
         <ui:insert name="menu">
             <h:form>
 
-                <!--Permissões do diretor que tem acesso total e irrestrito-->
-                <c:set var="podeVerTudo" value="#{request.isUserInRole('Administrador')}" scope="request"/> 
+                <!--Permissões do administrador que tem acesso total e irrestrito-->
+                <c:set var="podeTudo" value="#{request.isUserInRole('Administradores')}" scope="request"/> 
             </h:form>    
         </ui:insert>
     </div>    

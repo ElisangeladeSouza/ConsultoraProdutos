@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/templates/template.xhtml">
+
+    <ui:define name="titulo">#{clienteBean.editando ? msg.editCadastreCustomer : msg.newRegisterCustomer} | #{msg.systemName}</ui:define>
+
+    <ui:define name="corpo">
+        <p:fieldset legend="Relatórios">
+            <h:form id="formCadastroCliente">
+                <p:growl autoUpdate="true"/>
+
+                <p:toolbar id="toolbarCliente" style="margin-top: 10px;">
+                    <f:facet name="left">
+                        <p:commandButton id="emitirRelatorio" value="Emitir" onclick="this.form.target = '_blank'" ajax="false"/>
+                    </f:facet>
+                </p:toolbar>
+            </h:form>
+        </p:fieldset>
+    </ui:define>        
+</ui:composition>

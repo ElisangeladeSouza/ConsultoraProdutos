@@ -4,8 +4,7 @@
                 template="/WEB-INF/templates/template.xhtml"
                 xmlns:h="http://xmlns.jcp.org/jsf/html"
                 xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core"
-                template="/WEB-INF/templates/template.xhtml">
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <f:metadata>
         <f:viewParam name="cliente" value="#{clienteBean.cliente}"/>
@@ -13,12 +12,12 @@
 
     <ui:define id="uiTituloCliente" name="titulo">#{clienteBean.editando ? msg.editCadastreCustomer : msg.newRegisterCustomer} | #{msg.systemName}</ui:define>
 
-    <ui:define id="uiConteudoCliente" name="conteudo">
+    <ui:define id="uiConteudoCliente" name="corpo">
 
         <p:fieldset id="fieldsetCliente" legend="#{contaBean.editando ? msg.editCadastreCustomer : msg.newRegisterCustomer}">
 
             <p:panel id="panel" header="#{msg.cadastreCustomer}" style="padding: 20px">
-                <h:form id="formCliente" >
+                <h:form id="formCadastroCliente" >
                     <h:panelGroup>
                         <p:growl id="mensagens" autoUpdate="true"/>
                         <h:panelGrid columns="2" cellpadding="7">
@@ -29,10 +28,14 @@
                             <p:inputText id="produto" required="true" value="#{clienteBean.cliente.produto}"/>
 
                             <p:outputLabel value="#{msg.value}: " for="valor"/>
-                            <p:inputText id="valor" required="true" value="#{clienteBean.cliente.valor}"/>
+                            <p:inputText id="valor" required="true" value="#{clienteBean.cliente.valor}" maxlength="4">
+                                <f:convertNumber type="number" minFractionDigits="2"/>
+                            </p:inputText>
 
                             <p:outputLabel value="#{msg.total}: " for="total"/>
-                            <p:inputText id="total" value="#{clienteBean.cliente.total}"/>
+                            <p:inputText id="total" value="#{clienteBean.cliente.total}" maxlength="4">
+                                <f:convertNumber type="number" minFractionDigits="2"/>
+                            </p:inputText>
 
                         </h:panelGrid>
                     </h:panelGroup>
