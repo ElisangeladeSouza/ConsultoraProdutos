@@ -2,7 +2,7 @@ package br.com.projetospessoais.consultoraprodutos.exceptions;
 
 /**
  *
- * @author elisangela
+ * @author elisangela <elysangeladesouza@gmail.com>
  */
 public class ConsultoraException extends Exception {
 

@@ -7,7 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.DecimalMin;
 
 /**
  *
@@ -29,7 +28,7 @@ public class Cliente implements Serializable {
     @Column(name = "produto", length = 30)
     private String produto;
     
-    @Column(name = "valor")
+    @Column(name = "valor", length = 6)
     private double valor;
     
     @Column(name = "total")

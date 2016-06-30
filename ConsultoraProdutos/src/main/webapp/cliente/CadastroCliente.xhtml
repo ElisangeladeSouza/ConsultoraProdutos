@@ -28,14 +28,14 @@
                             <p:inputText id="produto" required="true" value="#{clienteBean.cliente.produto}"/>
 
                             <p:outputLabel value="#{msg.value}: " for="valor"/>
-                            <p:inputText id="valor" required="true" value="#{clienteBean.cliente.valor}" maxlength="4">
-                                <f:convertNumber type="number" minFractionDigits="2"/>
+                            <p:inputText id="valor" required="true" value="#{clienteBean.cliente.valor}" maxlength="6" styleClass="money">
+                                <f:convertNumber type="number" />
                             </p:inputText>
 
-                            <p:outputLabel value="#{msg.total}: " for="total"/>
+<!--                            <p:outputLabel value="#{msg.total}: " for="total"/>
                             <p:inputText id="total" value="#{clienteBean.cliente.total}" maxlength="4">
                                 <f:convertNumber type="number" minFractionDigits="2"/>
-                            </p:inputText>
+                            </p:inputText>-->
 
                         </h:panelGrid>
                     </h:panelGroup>

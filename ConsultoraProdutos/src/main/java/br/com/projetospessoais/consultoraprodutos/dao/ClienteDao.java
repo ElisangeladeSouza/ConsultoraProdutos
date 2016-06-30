@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author elisangela
+ * @author elisangela <elysangeladesouza@gmail.com>
  */
 public class ClienteDao extends DaoAbstract<Cliente> implements Serializable {
 
@@ -14,5 +14,5 @@ public class ClienteDao extends DaoAbstract<Cliente> implements Serializable {
     public ClienteDao() {
         super(Cliente.class);
     }
-    
+
 }

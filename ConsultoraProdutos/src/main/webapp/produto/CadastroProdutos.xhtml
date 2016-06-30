@@ -24,7 +24,9 @@
                             <p:inputText id="produto" required="true" value="#{produtoBean.produto.produto}"/>
 
                             <p:outputLabel value="#{msg.value}: " for="valor"/>
-                            <p:inputText id="valor" required="true" value="#{produtoBean.produto.valor}"/>
+                            <p:inputText id="valor" required="true" value="#{produtoBean.produto.valor}" styleClass="money" >
+                                <f:convertNumber type="number" />
+                            </p:inputText>
 
                             <p:outputLabel value="#{msg.quantity}: " for="quantidade"/>
                             <p:inputText id="quantidade" required="true" value="#{produtoBean.produto.quantidade}"/>

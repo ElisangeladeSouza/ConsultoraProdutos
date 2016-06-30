@@ -11,6 +11,8 @@
     <h:head>
         <title><ui:insert name="titulo">#{msg.systemName}</ui:insert></title>
         <h:outputStylesheet library="css" name="estilos.css"/>
+        <h:outputScript library="js" name="jquery.maskmoney.js" />
+        <h:outputScript library="js" name="jquery.mask.min.js" />
         <h:outputScript library="js" name="primefacesCalendarLocale.js" />
         <link rel="icon" type="image/x-icon" href="http://localhost:8080/ConsultoraProdutos/resources/imagens/favicon.ico" />
     </h:head>
@@ -54,6 +56,44 @@
                 <p:outputLabel value="#{msg.systemVersion}" style="float: right;"/>
             </div>
         </footer>
+        
+        <script>
+            function validateMoney() {
+                $(".money").maskMoney({
+                    decimal: ",",
+                    thousands: ".",
+                    allowZero: true,
+                    symbol: "RS"
+                });
+            }
+
+            $(document).ready(function () {
+                validateMoney();
+            });
+        </script>
+
+        <!--This script changes the mask of phone numbers with 8 and 9 digits-->
+        <script>
+
+            function validatePhone() {
+
+                var masks = ['(00) 00000-0000', '(00) 0000-00009'],
+                        maskBehavior = function (val, e, field, options) {
+                            return val.length > 14 ? masks[0] : masks[1];
+                        };
+
+                $('.phone').mask(maskBehavior, {onKeyPress:
+                            function (val, e, field, options) {
+                                field.mask(maskBehavior(val, e, field, options), options);
+                            }
+                });
+            }
+            $(document).ready(function () {
+                validatePhone();
+            }
+            );
+        </script>
+        
     </h:body>
 
 </html>

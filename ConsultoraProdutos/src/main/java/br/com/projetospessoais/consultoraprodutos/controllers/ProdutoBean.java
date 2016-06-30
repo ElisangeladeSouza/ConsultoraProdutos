@@ -1,11 +1,13 @@
 package br.com.projetospessoais.consultoraprodutos.controllers;
 
 import br.com.projetospessoais.consultoraprodutos.exceptions.ConsultoraException;
+import br.com.projetospessoais.consultoraprodutos.exceptions.NegocioException;
 import br.com.projetospessoais.consultoraprodutos.model.Produto;
-import br.com.projetospessoais.consultoraprodutos.services.ProdutoService;
+import br.com.projetospessoais.consultoraprodutos.services.interfaces.ProdutoServiceIF;
 import br.com.projetospessoais.consultoraprodutos.util.jsf.FacesUtil;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
 
@@ -22,7 +24,7 @@ public class ProdutoBean implements Serializable {
     private Produto produto;
     
     @Inject
-    private ProdutoService produtoService;
+    private ProdutoServiceIF produtoService;
     
     @Inject
     private Produto produtoSelecionado;
@@ -30,27 +32,33 @@ public class ProdutoBean implements Serializable {
     private transient List<Produto> produtos;
     
     public List<Produto> getProdutos() {
-        produtos = produtoService.findAll();
+//        produtos = produtoService.findAll();
         return produtos;
     }
 
     public ProdutoBean() {
     }
     
-    public void salvar() throws ConsultoraException {
+    @PostConstruct
+    public void init() {
+        this.produtos = produtoService.findAll();
+    }
+    
+    public void salvar() {
         this.produtoService.save(produto);
         if (getEditando()) {
             FacesUtil.mensagemSucesso("Cadastro de produto '" + produto.getProduto() + "' atualizado com sucesso!");
-            FacesUtil.redirecionaPara("PesquisaProduto.xhtml");
         } else {
             FacesUtil.mensagemSucesso("Cadastro efetuado com sucesso!");
         }
+        FacesUtil.redirecionaPara("PesquisaProduto.xhtml");
         produto = new Produto();
     }
-
-    public void excluir() throws ConsultoraException {
+    
+    public void excluir() throws NegocioException {
         this.produtoService.delete(produtoSelecionado);
         FacesUtil.mensagemSucesso("Exclusão efetuada com sucesso!");
+        FacesUtil.redirecionaPara("PesquisaProduto.xhtml");
     }
     
     /**
@@ -72,11 +80,11 @@ public class ProdutoBean implements Serializable {
         this.produto = produto;
     }
 
-    public ProdutoService getProdutoService() {
+    public ProdutoServiceIF getProdutoService() {
         return produtoService;
     }
 
-    public void setProdutoService(ProdutoService produtoService) {
+    public void setProdutoService(ProdutoServiceIF produtoService) {
         this.produtoService = produtoService;
     }
 

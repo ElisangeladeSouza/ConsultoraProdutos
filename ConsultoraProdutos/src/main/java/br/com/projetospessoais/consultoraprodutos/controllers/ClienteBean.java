@@ -1,15 +1,14 @@
 package br.com.projetospessoais.consultoraprodutos.controllers;
 
-import br.com.projetospessoais.consultoraprodutos.exceptions.ConsultoraException;
+import br.com.projetospessoais.consultoraprodutos.exceptions.NegocioException;
 import br.com.projetospessoais.consultoraprodutos.model.Cliente;
-import br.com.projetospessoais.consultoraprodutos.services.ClienteService;
+import br.com.projetospessoais.consultoraprodutos.services.interfaces.ClienteServiceIF;
 import br.com.projetospessoais.consultoraprodutos.util.jsf.FacesUtil;
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Model;
 import javax.inject.Inject;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  *
@@ -24,7 +23,7 @@ public class ClienteBean implements Serializable {
     private Cliente cliente;
 
     @Inject
-    private ClienteService clienteService;
+    private ClienteServiceIF clienteService;
 
     @Inject
     private Cliente clienteSelecionado;
@@ -33,26 +32,31 @@ public class ClienteBean implements Serializable {
 
     public ClienteBean() {
     }
+    
+    @PostConstruct
+    public void init() {
+        this.clientes = clienteService.findAll();
+    }
 
     public List<Cliente> getClientes() {
-        this.clientes = clienteService.findAll();
         return clientes;
     }
 
-    public void salvar() throws ConsultoraException {
+    public void salvar() {
         this.clienteService.save(cliente);
         if (getEditando()) {
             FacesUtil.mensagemSucesso("Cadastro de cliente '" + cliente.getNome() + "' atualizado com sucesso!");
-            FacesUtil.redirecionaPara("PesquisaCliente.xhtml");
         } else {
             FacesUtil.mensagemSucesso("Cadastro efetuado com sucesso!");
         }
+        FacesUtil.redirecionaPara("PesquisaCliente.xhtml");
         cliente = new Cliente();
     }
 
-    public void excluir() throws ConsultoraException {
+    public void excluir() throws NegocioException {
         this.clienteService.delete(clienteSelecionado);
         FacesUtil.mensagemSucesso("Exclusão efetuada com sucesso!");
+        FacesUtil.redirecionaPara("PesquisaCliente.xhtml");
     }
     
     /**
@@ -82,11 +86,11 @@ public class ClienteBean implements Serializable {
         this.cliente = cliente;
     }
 
-    public ClienteService getClienteService() {
+    public ClienteServiceIF getClienteService() {
         return clienteService;
     }
 
-    public void setClienteService(ClienteService clienteService) {
+    public void setClienteService(ClienteServiceIF clienteService) {
         this.clienteService = clienteService;
     }
 }

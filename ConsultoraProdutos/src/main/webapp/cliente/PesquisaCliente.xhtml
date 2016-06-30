@@ -9,12 +9,10 @@
     <ui:define id="uiPesquisaCliente" name="titulo">#{msg.searchCadastreCustomer} | #{msg.systemName}</ui:define>
     
     <ui:define name="corpo">
-        <p:fieldset legend="#{msg.searchCadastreCustomer}">
+        <h:form id="formPesquisaCliente">
+            <p:growl id="mensagens" autoUpdate="true"/>
+            <p:fieldset legend="#{msg.searchCadastreCustomer}">
 
-            <h:form id="formPesquisaCliente">
-
-                <p:growl id="mensagens" autoUpdate="true"/>
-                
                 <p:toolbar >
                     <f:facet name="right">
                         <p:button value="#{msg.newRegister}" id="botaoTelaCadastro"  icon="ui-icon ui-icon-pencil" 
@@ -56,7 +54,7 @@
                         </p:button>
 
                         <p:commandButton id="botaoExcluir" title="#{msg.delete}" icon="ui-icon ui-icon-trash" style="font-size: 10px"
-                                         action="#{clienteBean.excluir}" process="@this" update="datatablePesquisaCliente">
+                                         action="#{clienteBean.excluir}" process="@this" update="@form">
                             <f:setPropertyActionListener value="#{cliente}" target="#{clienteBean.clienteSelecionado}"/>
                             <p:tooltip for="botaoExcluir" value="#{msg.deleteSelectedRow}"/>
 
@@ -65,7 +63,7 @@
                         </p:commandButton>
                     </p:column>
                 </p:dataTable>    
-            </h:form>
-        </p:fieldset>    
+            </p:fieldset>    
+        </h:form>
     </ui:define>
 </ui:composition>

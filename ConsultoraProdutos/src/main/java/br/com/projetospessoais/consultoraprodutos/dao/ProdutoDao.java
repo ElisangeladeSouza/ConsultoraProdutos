@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author elisangela
+ * @author elisangela <elysangeladesouza@gmail.com>
  */
 public class ProdutoDao extends DaoAbstract<Produto> implements Serializable {
     

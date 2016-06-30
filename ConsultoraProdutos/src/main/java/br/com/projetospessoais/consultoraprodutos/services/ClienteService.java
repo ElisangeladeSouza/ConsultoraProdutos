@@ -1,8 +1,9 @@
 package br.com.projetospessoais.consultoraprodutos.services;
 
 import br.com.projetospessoais.consultoraprodutos.dao.ClienteDao;
-import br.com.projetospessoais.consultoraprodutos.exceptions.ConsultoraException;
+import br.com.projetospessoais.consultoraprodutos.exceptions.NegocioException;
 import br.com.projetospessoais.consultoraprodutos.model.Cliente;
+import br.com.projetospessoais.consultoraprodutos.services.interfaces.ClienteServiceIF;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
@@ -12,7 +13,7 @@ import javax.transaction.Transactional;
  *
  * @author elisangela <elysangeladesouza@gmail.com>
  */
-public class ClienteService implements Serializable {
+public class ClienteService implements ClienteServiceIF, Serializable {
     
     private static final long serialVersionUID = 1L;
     
@@ -23,14 +24,21 @@ public class ClienteService implements Serializable {
     }
     
     @Transactional
+    @Override
     public void save(Cliente cliente) {
         if (cliente != null) {
             this.clienteDao.salvar(cliente);
         }
     }
 
+    /**
+     *
+     * @param cliente 
+     * @throws NegocioException
+     */
     @Transactional
-    public void delete(Cliente cliente)  throws ConsultoraException{
+    @Override
+    public void delete(Cliente cliente)  throws NegocioException{
         clienteDao.delete(findById(cliente.getId()));
     }
     
@@ -38,6 +46,7 @@ public class ClienteService implements Serializable {
         return clienteDao.findById(id);
     }
 
+    @Override
     public List<Cliente> findAll() {
         return clienteDao.findAll();
     }

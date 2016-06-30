@@ -1,11 +1,11 @@
 package br.com.projetospessoais.consultoraprodutos.dao;
 
-import br.com.projetospessoais.consultoraprodutos.exceptions.ConsultoraException;
+import br.com.projetospessoais.consultoraprodutos.dao.interfaces.Dao;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.Query;
+import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
@@ -20,8 +20,8 @@ import org.apache.commons.logging.LogFactory;
  * @author elisangela <elysangeladesouza@gmail.com>
  * @param <T>
  */
-public abstract class DaoAbstract<T> implements Serializable {
-
+public abstract class DaoAbstract<T> implements Dao<T>, Serializable {
+    
     private static final long serialVersionUID = 1L;
 
     private static final Log LOGGER = LogFactory.getLog(DaoAbstract.class);
@@ -61,6 +61,7 @@ public abstract class DaoAbstract<T> implements Serializable {
      *
      * @param entity
      */
+    @Override
     public void salvar(T entity) {
         entityManager.merge(entity);
     }
@@ -70,6 +71,7 @@ public abstract class DaoAbstract<T> implements Serializable {
      *
      * @param entity
      */
+    @Override
     public void delete(T entity) {
         entityManager.remove(entity);
     }
@@ -81,6 +83,7 @@ public abstract class DaoAbstract<T> implements Serializable {
      *
      * @return
      */
+    @Override
     public List<T> findAll() {
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entity));
@@ -94,18 +97,18 @@ public abstract class DaoAbstract<T> implements Serializable {
      * @param id
      * @return
      */
+    @Override
     public T findById(Long id) {
         return entityManager.find(entity, id);
     }
 
     /**
-     *
      * @param campo
      * @param valor
      * @return
-     * @throws ConsultoraException
      */
-    public T buscarPorCampo(String campo, Object valor) throws ConsultoraException {
+    @Override
+    public T buscarPorCampo(String campo, Object valor) {
         try {
             CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
             CriteriaQuery<T> createQuery = criteriaBuilder.createQuery(entity);
@@ -114,10 +117,10 @@ public abstract class DaoAbstract<T> implements Serializable {
             predicate = criteriaBuilder.and(predicate, criteriaBuilder.equal(root.<T>get(campo), valor));
             createQuery.where(predicate);
             return entityManager.createQuery(createQuery).getSingleResult();
-        } catch (Exception e) {
-            LOGGER.warn(e);
-            throw new ConsultoraException("Informação não encontrada");
+        } catch (NoResultException ex) {
+            LOGGER.info("Informação não encontrada" + ex.getMessage());
         }
+        return null;
     }
 
     /**
@@ -130,15 +133,15 @@ public abstract class DaoAbstract<T> implements Serializable {
         this.entityManager = entityManager;
     }
     
-    public List<T> query(String query, Object... params) {
-        List<T> result = null;
-        Query q = entityManager.createQuery(query);
-        int paramPos = 1;
-        for (Object o : params) {
-            q.setParameter(paramPos++, o);
-        }
-        result = q.getResultList();
-        return result;
-    }
+//    public List<T> query(String query, Object... params) {
+//        List<T> result = null;
+//        Query q = entityManager.createQuery(query);
+//        int paramPos = 1;
+//        for (Object o : params) {
+//            q.setParameter(paramPos++, o);
+//        }
+//        result = q.getResultList();
+//        return result;
+//    }
 
 }
