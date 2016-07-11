@@ -25,15 +25,15 @@ public class Cliente implements Serializable {
     @Column(name = "nome_cliente", length = 30)
     private String nome;
     
-    @Column(name = "produto", length = 30)
-    private String produto;
+    @Column(name = "cpf_cliente", unique = true, length = 11)
+    private String cpf;
     
-    @Column(name = "valor", length = 6)
-    private double valor;
+    @Column(name = "endereco_cliente", length = 50)
+    private String endereco;
     
-    @Column(name = "total")
-    private double total;
-
+//    @Column(name = "conta_cliente")
+//    private double conta;
+    
     public Cliente() {
     }
 
@@ -45,22 +45,6 @@ public class Cliente implements Serializable {
         this.nome = nome;
     }
 
-    public String getProduto() {
-        return produto;
-    }
-
-    public void setProduto(String produto) {
-        this.produto = produto;
-    }
-
-    public double getValor() {
-        return valor;
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
-    }
-
     public Long getId() {
         return id;
     }
@@ -69,12 +53,20 @@ public class Cliente implements Serializable {
         this.id = id;
     }
 
-    public double getTotal() {
-        return total;
+    public String getCpf() {
+        return cpf;
     }
 
-    public void setTotal(double total) {
-        this.total = total;
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     @Override

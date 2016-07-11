@@ -21,15 +21,15 @@
                         <p:growl id="mensagens" autoUpdate="true"/>
                         <h:panelGrid columns="2" cellpadding="7">
                             <p:outputLabel value="#{msg.product}: " for="produto"/>
-                            <p:inputText id="produto" required="true" value="#{produtoBean.produto.produto}"/>
+                            <p:inputText id="produto" required="true" value="#{produtoBean.produto.produto}" size="30"/>
 
-                            <p:outputLabel value="#{msg.value}: " for="valor"/>
-                            <p:inputText id="valor" required="true" value="#{produtoBean.produto.valor}" styleClass="money" >
+                            <p:outputLabel value="#{msg.unitaryValue}: " for="valor"/>
+                            <p:inputText id="valor" required="true" value="#{produtoBean.produto.valor}" styleClass="money" size="6">
                                 <f:convertNumber type="number" />
                             </p:inputText>
 
                             <p:outputLabel value="#{msg.quantity}: " for="quantidade"/>
-                            <p:inputText id="quantidade" required="true" value="#{produtoBean.produto.quantidade}"/>
+                            <p:inputText id="quantidade" required="true" value="#{produtoBean.produto.quantidade}" size="6"/>
 
                         </h:panelGrid>
 

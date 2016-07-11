@@ -1,7 +1,6 @@
 package br.com.projetospessoais.consultoraprodutos.services;
 
 import br.com.projetospessoais.consultoraprodutos.dao.ProdutoDao;
-import br.com.projetospessoais.consultoraprodutos.exceptions.ConsultoraException;
 import br.com.projetospessoais.consultoraprodutos.exceptions.NegocioException;
 import br.com.projetospessoais.consultoraprodutos.model.Produto;
 import br.com.projetospessoais.consultoraprodutos.services.interfaces.ProdutoServiceIF;

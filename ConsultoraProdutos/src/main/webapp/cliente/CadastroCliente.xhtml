@@ -22,19 +22,18 @@
                         <p:growl id="mensagens" autoUpdate="true"/>
                         <h:panelGrid columns="2" cellpadding="7">
                             <p:outputLabel value="#{msg.name}: " for="nome"/>
-                            <p:inputText id="nome" required="true" value="#{clienteBean.cliente.nome}"/>
+                            <p:inputText id="nome" required="true" value="#{clienteBean.cliente.nome}" size="38"/>
 
-                            <p:outputLabel value="#{msg.product}: " for="produto"/>
-                            <p:inputText id="produto" required="true" value="#{clienteBean.cliente.produto}"/>
+                            <p:outputLabel value="#{msg.address}: " for="endereco"/>
+                            <p:inputText id="endereco" value="#{clienteBean.cliente.endereco}" size="38"/>
+                            
+                            <p:outputLabel value="#{msg.cpf}: " for="cpf"/>
+                            <p:inputMask id="cpf" mask="999.999.999-99" value="#{clienteBean.cliente.cpf}" size="20" 
+                                         validator="cpfValidator" converter="cpfConverter"/>
 
-                            <p:outputLabel value="#{msg.value}: " for="valor"/>
-                            <p:inputText id="valor" required="true" value="#{clienteBean.cliente.valor}" maxlength="6" styleClass="money">
+<!--                            <p:outputLabel value="Conta: " for="conta"/>
+                            <p:inputText id="conta" value="#{clienteBean.cliente.conta}" maxlength="6" styleClass="money" size="6">
                                 <f:convertNumber type="number" />
-                            </p:inputText>
-
-<!--                            <p:outputLabel value="#{msg.total}: " for="total"/>
-                            <p:inputText id="total" value="#{clienteBean.cliente.total}" maxlength="4">
-                                <f:convertNumber type="number" minFractionDigits="2"/>
                             </p:inputText>-->
 
                         </h:panelGrid>

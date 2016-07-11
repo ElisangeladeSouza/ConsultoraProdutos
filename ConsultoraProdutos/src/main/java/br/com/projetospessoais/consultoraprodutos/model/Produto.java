@@ -10,7 +10,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author elisangela
+ * @author elisangela <elysangeladesouza@gmail.com>
  */
 @Entity
 public class Produto implements Serializable {

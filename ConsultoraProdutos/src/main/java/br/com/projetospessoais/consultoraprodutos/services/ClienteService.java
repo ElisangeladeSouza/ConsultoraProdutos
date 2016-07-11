@@ -7,7 +7,7 @@ import br.com.projetospessoais.consultoraprodutos.services.interfaces.ClienteSer
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Inject;
-import javax.transaction.Transactional;
+import br.com.projetospessoais.consultoraprodutos.util.jpa.Transactional;
 
 /**
  *
@@ -30,7 +30,7 @@ public class ClienteService implements ClienteServiceIF, Serializable {
             this.clienteDao.salvar(cliente);
         }
     }
-
+    
     /**
      *
      * @param cliente 

@@ -21,7 +21,7 @@
                 </p:toolbar>
                 
                 <p:dataTable id="datatablePesquisaCliente" var="cliente" value="#{clienteBean.clientes}"
-                             paginatorAlwaysVisible="false" style="margin-top: 1px; " rows="10" 
+                             paginatorAlwaysVisible="false" style="margin-top: 1px; " rows="10" reflow="true" 
                              paginatorPosition="bottom" emptyMessage="#{msg.noFoundsRecord}" paginator="true" widgetVar="pesquisaCliente"
                              paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} 
                              {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowsPerPageTemplate="5,10,20,50,100"
@@ -40,6 +40,14 @@
                     <p:column headerText="#{msg.name}" width="80" filterMatchMode="contains" filterBy="#{cliente.nome}" filterStyle="width: 300px; display:none">
                         <h:outputText id="cliente" value="#{cliente.nome}"/>
                     </p:column>
+                    
+                    <p:column headerText="#{msg.address}" width="80" filterMatchMode="contains" filterBy="#{cliente.endereco}" filterStyle="width: 300px; display:none">
+                        <h:outputText id="endereco" value="#{cliente.endereco}"/>
+                    </p:column>
+                    
+<!--                    <p:column headerText="Conta" width="80" filterMatchMode="contains" filterBy="#{cliente.conta}" filterStyle="width: 300px; display:none">
+                        <h:outputText id="conta" value="#{cliente.conta}"/>
+                    </p:column>-->
                     
                     <p:column id="acoes" headerText="#{msg.actions}" style="text-align: center" width="25">
 <!--                        <p:button id="botaoVisualizar" title="#{msg.view}" icon="ui-icon ui-icon-extlink" style="font-size: 10px"

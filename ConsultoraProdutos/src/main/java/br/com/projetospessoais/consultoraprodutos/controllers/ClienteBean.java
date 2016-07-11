@@ -29,7 +29,11 @@ public class ClienteBean implements Serializable {
     private Cliente clienteSelecionado;
 
     private transient List<Cliente> clientes;
-
+    
+    public List<Cliente> getClientes() {
+        return clientes;
+    }
+    
     public ClienteBean() {
     }
     
@@ -37,11 +41,7 @@ public class ClienteBean implements Serializable {
     public void init() {
         this.clientes = clienteService.findAll();
     }
-
-    public List<Cliente> getClientes() {
-        return clientes;
-    }
-
+    
     public void salvar() {
         this.clienteService.save(cliente);
         if (getEditando()) {
@@ -52,7 +52,7 @@ public class ClienteBean implements Serializable {
         FacesUtil.redirecionaPara("PesquisaCliente.xhtml");
         cliente = new Cliente();
     }
-
+    
     public void excluir() throws NegocioException {
         this.clienteService.delete(clienteSelecionado);
         FacesUtil.mensagemSucesso("Exclusão efetuada com sucesso!");
@@ -92,5 +92,9 @@ public class ClienteBean implements Serializable {
 
     public void setClienteService(ClienteServiceIF clienteService) {
         this.clienteService = clienteService;
+    }
+
+    public void setClientes(List<Cliente> clientes) {
+        this.clientes = clientes;
     }
 }

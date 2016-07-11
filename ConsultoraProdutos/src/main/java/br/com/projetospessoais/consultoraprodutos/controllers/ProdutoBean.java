@@ -32,7 +32,6 @@ public class ProdutoBean implements Serializable {
     private transient List<Produto> produtos;
     
     public List<Produto> getProdutos() {
-//        produtos = produtoService.findAll();
         return produtos;
     }
 

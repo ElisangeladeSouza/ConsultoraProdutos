@@ -28,17 +28,14 @@
         <h:form style="padding: 1px;margin-top: 5px">
 
             <p:menubar styleClass="labelMenu">
-                <!--<p:submenu id="cadastroCliente" label="#{msg.cadastreCustomer}" icon="ui-icon-person">-->
-                    <p:menuitem  id="cliente" value="#{msg.customer}" outcome="/cliente/PesquisaCliente" rendered="#{podeTudo}" icon="ui-icon-person"/>
-                <!--</p:submenu>-->
+                
+                <p:menuitem  id="vendas" value="Vendas" rendered="#{podeTudo}" icon="ui-icon-person"/>
+                
+                <p:menuitem  id="cliente" value="#{msg.customer}" outcome="/cliente/PesquisaCliente" rendered="#{podeTudo}" icon="ui-icon-person"/>
 
-                <!--<p:submenu id="cadastroProduto" label="#{msg.cadastreProduct}" icon="ui-icon-cart">-->
-                    <p:menuitem id="produto" value="#{msg.product}" outcome="/produto/PesquisaProduto" rendered="#{podeTudo}" icon="ui-icon-cart"/>
-                <!--</p:submenu>-->
+                <p:menuitem id="produto" value="#{msg.product}" outcome="/produto/PesquisaProduto" rendered="#{podeTudo}" icon="ui-icon-cart"/>
 
-                <!--<p:submenu id="cadastroRelatorios" label="Relátorios" icon="ui-icon-note">-->
                 <p:menuitem id="relatorios" value="Relatórios" outcome="/relatorios/Relatorios" rendered="#{podeTudo}" icon="ui-icon-note"/>
-                <!--</p:submenu>-->
 
                 <p:menuitem id="sair" value="Sair" icon="ui-icon-power" action="#{usuarioBean.logout}"/>
 
